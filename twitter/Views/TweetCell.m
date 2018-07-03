@@ -25,13 +25,17 @@
     self.tweet = tweet;
     self.profileView.image = nil;
     [self.profileView setImageWithURL:self.tweet.user.profileURL];
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
     self.nameLabel.text = self.tweet.user.name;
     self.createdAtLabel.text = self.tweet.createdAtString;
     self.screenNameLabel.text = [@"@" stringByAppendingString:self.tweet.user.screenName];
     self.contentLabel.text = self.tweet.text;
-//    self.replyButton.text = self.tweet.;
+//    self.replyButton;
 //    self.retweetButton;
 //    self.favoriteButton;
+//    self.replyCountLabel;
+    self.retweetCountLabel.text = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
+    self.favoriteCountLabel.text = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
 }
 
 @end
