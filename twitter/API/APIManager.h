@@ -18,4 +18,8 @@
 
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 
+- (void)postFavorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+
+- (void)postRetweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+
 @end

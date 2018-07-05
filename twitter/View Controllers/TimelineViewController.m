@@ -28,7 +28,7 @@
     self.tableView.delegate = self;
     
     [self fetchTimeline];
-//    
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTimeline) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
@@ -65,16 +65,16 @@
     return self.tweets.count;
 }
 
+- (void)didPostTweet:(Tweet *)tweet {
+    [self fetchTimeline];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *navigationController = [segue destinationViewController];
     ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
     composeController.delegate = self;
-}
-
-- (void)didTweet:(Tweet *)tweet {
-    [self fetchTimeline];
 }
 
 @end

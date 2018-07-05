@@ -11,7 +11,7 @@
 
 @protocol ComposeViewControllerDelegate
 
-- (void)didTweet:(Tweet *)tweet;
+- (void)didPostTweet:(Tweet *)tweet;
 
 @end
 

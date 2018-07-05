@@ -119,6 +119,10 @@
                                                     <state key="normal" image="retweet-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <state key="selected" image="retweet-icon-green"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="Fbo-l6-PwQ" eventType="touchUpInside" id="FdO-9x-2jy"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-hH-k5k" userLabel="Like Button">
                                                     <rect key="frame" x="248" y="135" width="25" height="25"/>
@@ -127,6 +131,10 @@
                                                     <state key="normal" image="favor-icon">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <state key="selected" image="favor-icon-red"/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="Fbo-l6-PwQ" eventType="touchUpInside" id="Okh-ya-cxV"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fz-OB-XS9" userLabel="Share Button">
                                                     <rect key="frame" x="335" y="135" width="25" height="25"/>
@@ -220,12 +228,12 @@
                     <navigationItem key="navigationItem" id="wOi-r5-tMP">
                         <barButtonItem key="leftBarButtonItem" image="close-icon" id="EJi-GB-pcU">
                             <connections>
-                                <action selector="closeTapped:" destination="hNg-X5-ygY" id="5ev-9I-eHN"/>
+                                <action selector="didTapClose:" destination="hNg-X5-ygY" id="b1S-6z-epw"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="MY0-G6-NV0">
                             <connections>
-                                <action selector="tweetTapped:" destination="hNg-X5-ygY" id="YKm-aU-TcH"/>
+                                <action selector="didTapTweet:" destination="hNg-X5-ygY" id="Utk-gA-lKa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -279,8 +287,10 @@
         <image name="close-icon" width="26" height="24"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="favor-icon-red" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
 </document>

@@ -59,5 +59,22 @@
     return tweets;
 }
 
+- (void)toggleFavorite {
+    if (self.favorited) {
+        self.favoriteCount -= 1;
+    } else {
+        self.favoriteCount += 1;
+    }
+    self.favorited = !self.favorited;
+}
+
+- (void)toggleRetweet {
+    if (self.retweeted) {
+        self.retweetCount -= 1;
+    } else {
+        self.retweetCount += 1;
+    }
+    self.retweeted = !self.retweeted;
+}
 
 @end

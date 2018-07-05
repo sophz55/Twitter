@@ -28,4 +28,8 @@
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
 
+- (void)toggleFavorite;
+
+- (void)toggleRetweet;
+
 @end

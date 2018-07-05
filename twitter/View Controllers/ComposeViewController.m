@@ -27,16 +27,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)closeTapped:(id)sender {
+- (IBAction)didTapClose:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
-- (IBAction)tweetTapped:(id)sender {
+- (IBAction)didTapTweet:(id)sender {
     [[APIManager shared] postStatusWithText:self.statusContentTextView.text completion:^(Tweet *tweet, NSError *error) {
         if(error){
             NSLog(@"Error composing Tweet: %@", error.localizedDescription);
         } else {
-            [self.delegate didTweet:tweet];
+            [self.delegate didPostTweet:tweet];
             NSLog(@"Compose Tweet Success!");
         }
     }];
