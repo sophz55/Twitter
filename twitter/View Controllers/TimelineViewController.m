@@ -1,4 +1,3 @@
-
 //
 //  TimelineViewController.m
 //  twitter
@@ -12,7 +11,7 @@
 #import "TweetCell.h"
 #import "ComposeViewController.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
 @property (strong, nonatomic) NSArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -66,14 +65,16 @@
     return self.tweets.count;
 }
 
+#pragma mark - Navigation
 
-//#pragma mark - Navigation
-//
-//// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//// Get the new view controller using [segue destinationViewController].
-//// Pass the selected object to the new view controller.
-//
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
+}
+
+- (void)didTweet:(Tweet *)tweet {
+    [self fetchTimeline];
+}
 
 @end
