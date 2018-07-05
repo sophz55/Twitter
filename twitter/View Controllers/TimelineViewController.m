@@ -10,6 +10,7 @@
 #import "TimelineViewController.h"
 #import "APIManager.h"
 #import "TweetCell.h"
+#import "ComposeViewController.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -65,14 +66,14 @@
     return self.tweets.count;
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
+//#pragma mark - Navigation
+//
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//// Get the new view controller using [segue destinationViewController].
+//// Pass the selected object to the new view controller.
+//
+//}
 
 @end
