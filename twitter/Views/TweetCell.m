@@ -47,10 +47,9 @@
             NSLog(@"Successfully (un)favorited the following Tweet: %@", tweet.text);
         }
     }];
-    
     [self.favoriteButton setSelected:!self.favoriteButton.selected];
     [self.tweet toggleFavorite];
-    [self refreshData];
+    self.favoriteCountLabel.text = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
 }
 
 - (IBAction)didTapRetweet:(id)sender {
@@ -61,15 +60,9 @@
             NSLog(@"Successfully (un)retweeted the following Tweet: %@", tweet.text);
         }
     }];
-    
     [self.retweetButton setSelected:!self.retweetButton.selected];
     [self.tweet toggleRetweet];
-    [self refreshData];
-}
-
-- (void)refreshData {
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
-    self.favoriteCountLabel.text = [NSString stringWithFormat:@"%d",self.tweet.favoriteCount];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TweetDetailViewController.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
@@ -30,7 +31,7 @@
     self.tableView.delegate = self;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 170;
+//    self.tableView.estimatedRowHeight = 170;
     
     [self fetchTimeline];
     
@@ -82,14 +83,19 @@
     
     [[APIManager shared] logout];
 }
-    
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    composeController.delegate = self;
+    if ([segue.identifier isEqualToString:@"composeSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    } else { //only other segue is from tweet cell to tweet detail
+        TweetCell *cell = sender;
+        TweetDetailViewController *tweetDetailController = [segue destinationViewController];
+        tweetDetailController.tweet = cell.tweet;
+    }
 }
 
 @end
