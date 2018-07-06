@@ -8,6 +8,7 @@
 
 #import "Tweet.h"
 #import "User.h"
+#import "NSDate+DateTools.h"
 
 @implementation Tweet
 
@@ -34,20 +35,30 @@
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
         
-        // Format and set createdAt date string
-        NSString *createdAtOriginalString = dictionary[@"created_at"];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        // Configure the input format to parse the date string
-        formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
-        // Convert String to Date
-        NSDate *date = [formatter dateFromString:createdAtOriginalString];
-        // Configure output format
-        formatter.dateStyle = NSDateFormatterShortStyle;
-        formatter.timeStyle = NSDateFormatterNoStyle;
-        // Convert Date to String
-        self.createdAtString = [formatter stringFromDate:date];
+        self.createdAtString = [self formatDateString:dictionary[@"created_at"]];
     }
     return self;
+}
+
+- (NSString *)formatDateString:(NSString *)createdAtOriginalString{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    
+    // Convert String to Date
+    NSDate *createdAtDate = [formatter dateFromString:createdAtOriginalString];
+    NSTimeInterval timeAgo = createdAtDate.timeIntervalSinceNow;
+    NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timeAgo];
+    
+    // Configure output format
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    // Convert Date to String
+    if (timeAgo < 518400) { // 6 days in seconds
+        return timeAgoDate.shortTimeAgoSinceNow;
+    }
+    return [formatter stringFromDate:createdAtDate];
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries {
