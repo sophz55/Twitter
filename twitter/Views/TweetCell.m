@@ -25,10 +25,10 @@
 - (void)setCellWithTweet:(Tweet *)tweet {
     self.tweet = tweet;
     self.profileView.image = nil;
-    [self.profileView setImageWithURL:self.tweet.user.profileURL];
     self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
+    [self.profileView setImageWithURL:self.tweet.user.profileURL];
     self.nameLabel.text = self.tweet.user.name;
-    self.createdAtLabel.text = self.tweet.createdAtString;
+    self.createdAtLabel.text = [@"· " stringByAppendingString:self.tweet.createdAtString];
     self.screenNameLabel.text = [@"@" stringByAppendingString:self.tweet.user.screenName];
     self.contentLabel.text = self.tweet.text;
     [self.favoriteButton setSelected:self.tweet.favorited];

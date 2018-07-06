@@ -10,6 +10,8 @@
 #import "APIManager.h"
 #import "TweetCell.h"
 #import "ComposeViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
@@ -27,6 +29,9 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 170;
+    
     [self fetchTimeline];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -43,7 +48,6 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
-        self.tableView.rowHeight = 170;
         [self.refreshControl endRefreshing];
     }];
 }
@@ -68,6 +72,17 @@
 - (void)didPostTweet:(Tweet *)tweet {
     [self fetchTimeline];
 }
+
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    [[APIManager shared] logout];
+}
+    
 
 #pragma mark - Navigation
 
