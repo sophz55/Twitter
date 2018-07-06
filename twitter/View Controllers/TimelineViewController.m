@@ -31,7 +31,7 @@
     self.tableView.delegate = self;
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight = 170;
+    self.tableView.estimatedRowHeight = 170;
     
     [self fetchTimeline];
     
