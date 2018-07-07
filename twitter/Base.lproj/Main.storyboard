@@ -82,6 +82,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gH3-5K-O7z">
                                                     <rect key="frame" x="15" y="8" width="50" height="50"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="baZ-3N-gcg"/>
                                                         <constraint firstAttribute="height" constant="50" id="wpA-vq-NcE"/>
@@ -414,21 +415,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's happening?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="275-LA-9HY">
-                                <rect key="frame" x="53" y="75" width="312" height="238"/>
+                                <rect key="frame" x="63" y="75" width="302" height="238"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KCK-ef-bJM">
-                                <rect key="frame" x="15" y="75" width="30" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="KCK-ef-bJM">
+                                <rect key="frame" x="15" y="75" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="7MS-fI-fRi"/>
-                                    <constraint firstAttribute="width" constant="30" id="pAM-f8-w5R"/>
+                                    <constraint firstAttribute="height" constant="40" id="7MS-fI-fRi"/>
+                                    <constraint firstAttribute="width" constant="40" id="pAM-f8-w5R"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140 characters remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z69-bA-H1d">
-                                <rect key="frame" x="53" y="323" width="184" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- characters remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z69-bA-H1d">
+                                <rect key="frame" x="63" y="323" width="171.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="7sO-6K-Fn7"/>
                                 </constraints>
@@ -465,6 +467,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="charactersRemainingLabel" destination="Z69-bA-H1d" id="gHd-UD-yx7"/>
+                        <outlet property="profileView" destination="KCK-ef-bJM" id="GTu-Vf-O7d"/>
                         <outlet property="statusContentTextView" destination="275-LA-9HY" id="GKW-Ig-hjv"/>
                     </connections>
                 </viewController>
@@ -516,6 +519,7 @@
         <image name="favor-icon" width="30" height="30"/>
         <image name="favor-icon-red" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
+        <image name="profile-Icon" width="26" height="26"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
         <image name="retweet-icon-green" width="30" height="30"/>

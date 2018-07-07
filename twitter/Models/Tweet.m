@@ -47,7 +47,6 @@
     
     // Convert String to Date
     NSDate *createdAtDate = [formatter dateFromString:createdAtOriginalString];
-    NSLog(@"%@", createdAtDate);
     NSTimeInterval timeAgo = createdAtDate.timeIntervalSinceNow;
     NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timeAgo];
     

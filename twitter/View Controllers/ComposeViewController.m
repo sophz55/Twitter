@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *statusContentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *charactersRemainingLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profileView;
+@property (nonatomic) long characterLimit;
 
 @end
 
@@ -21,6 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.statusContentTextView.delegate = self;
+    
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
+    
+    self.characterLimit = 280;
+    self.charactersRemainingLabel.text = [NSString stringWithFormat:@"%ld characters remaining", self.characterLimit];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,25 +41,23 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    long characterLimit = 280;
     NSString *newText = [self.statusContentTextView.text stringByReplacingCharactersInRange:range withString:text];
     
-    long charactersRemaining = characterLimit - newText.length;
+    long charactersRemaining = self.characterLimit - newText.length;
     if (charactersRemaining <= 5) {
         self.charactersRemainingLabel.textColor = [UIColor redColor];
     } else {
         self.charactersRemainingLabel.textColor = [UIColor blackColor];
     }
-    if (newText.length < characterLimit - 1) {
+    if (newText.length < self.characterLimit - 1) {
         self.charactersRemainingLabel.text = [NSString stringWithFormat:@"%ld characters remaining", charactersRemaining];
-        NSLog(@"%ld", newText.length);
-    } else if (newText.length == characterLimit - 1) {
+    } else if (newText.length == self.characterLimit - 1) {
         self.charactersRemainingLabel.text = @"1 character remaining";
     } else {
         self.charactersRemainingLabel.text = @"0 characters remaining";
     }
     
-    return newText.length <= characterLimit;
+    return newText.length <= self.characterLimit;
 }
 
 - (IBAction)didTapClose:(id)sender {
