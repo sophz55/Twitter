@@ -18,7 +18,6 @@
         self.descriptionText = dictionary[@"description"];
         self.location = dictionary[@"location"];
         self.profileImageURL = [NSURL URLWithString:dictionary[@"profile_image_url_https"]];
-        NSLog(@"%@", self.profileImageURL);
         if (![dictionary[@"profile_background_image_url_https"] isEqual:[NSNull null]]){
             self.backgroundImageURL = [NSURL URLWithString:dictionary[@"profile_background_image_url_https"]];
         }
