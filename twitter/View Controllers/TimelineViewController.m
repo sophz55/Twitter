@@ -13,8 +13,9 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TweetDetailViewController.h"
+#import "UserProfileViewController.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, TweetCellDelegate>
 
 @property (strong, nonatomic) NSArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -61,6 +62,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
 
+    cell.delegate = self;
+    
     [cell setCellWithTweet:self.tweets[indexPath.row]];
     
     return cell;
@@ -86,11 +89,18 @@
 
 #pragma mark - Navigation
 
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user{
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"composeSegue"]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"profileSegue"]) {
+        UserProfileViewController *userProfileViewController = [segue destinationViewController];
+        userProfileViewController.user = sender;
     } else { //only other segue is from tweet cell to tweet detail
         TweetCell *cell = sender;
         TweetDetailViewController *tweetDetailController = [segue destinationViewController];

@@ -14,7 +14,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.profileView addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profileView setUserInteractionEnabled:YES];
+
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,7 +30,7 @@
     self.tweet = tweet;
     self.profileView.image = nil;
     self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
-    [self.profileView setImageWithURL:self.tweet.user.profileURL];
+    [self.profileView setImageWithURL:self.tweet.user.profileImageURL];
     self.nameLabel.text = self.tweet.user.name;
     self.createdAtLabel.text = [@"· " stringByAppendingString:self.tweet.createdAtString];
     self.screenNameLabel.text = [@"@" stringByAppendingString:self.tweet.user.screenName];
@@ -63,6 +67,10 @@
     [self.retweetButton setSelected:!self.retweetButton.selected];
     [self.tweet toggleRetweet];
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%d",self.tweet.retweetCount];
+}
+
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    [self.delegate tweetCell:self didTap:self.tweet.user];
 }
 
 @end
