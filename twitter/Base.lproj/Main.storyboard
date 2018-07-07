@@ -414,7 +414,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's happening?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="275-LA-9HY">
-                                <rect key="frame" x="53" y="75" width="312" height="582"/>
+                                <rect key="frame" x="53" y="75" width="312" height="238"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -427,13 +427,25 @@
                                     <constraint firstAttribute="width" constant="30" id="pAM-f8-w5R"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140 characters remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z69-bA-H1d">
+                                <rect key="frame" x="53" y="323" width="184" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7sO-6K-Fn7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="275-LA-9HY" firstAttribute="leading" secondItem="KCK-ef-bJM" secondAttribute="trailing" constant="8" id="0tQ-6o-ND8"/>
+                            <constraint firstItem="Z69-bA-H1d" firstAttribute="leading" secondItem="275-LA-9HY" secondAttribute="leading" id="38j-nr-dVV"/>
                             <constraint firstItem="KCK-ef-bJM" firstAttribute="leading" secondItem="hhc-Mk-sPo" secondAttribute="leading" constant="15" id="8JF-2f-xM0"/>
-                            <constraint firstItem="hhc-Mk-sPo" firstAttribute="bottom" secondItem="275-LA-9HY" secondAttribute="bottom" constant="10" id="hwC-A0-6QW"/>
+                            <constraint firstItem="Z69-bA-H1d" firstAttribute="centerY" secondItem="7b8-PS-NaE" secondAttribute="centerY" id="CBJ-4L-gnk"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z69-bA-H1d" secondAttribute="trailing" constant="10" id="PEf-tm-5bO"/>
                             <constraint firstItem="275-LA-9HY" firstAttribute="top" secondItem="KCK-ef-bJM" secondAttribute="top" id="rI9-Fa-Ud4"/>
+                            <constraint firstItem="Z69-bA-H1d" firstAttribute="top" secondItem="275-LA-9HY" secondAttribute="bottom" constant="10" id="urH-mW-e5f"/>
                             <constraint firstItem="hhc-Mk-sPo" firstAttribute="trailing" secondItem="275-LA-9HY" secondAttribute="trailing" constant="10" id="vwx-4x-Cy4"/>
                             <constraint firstItem="KCK-ef-bJM" firstAttribute="top" secondItem="hhc-Mk-sPo" secondAttribute="top" constant="11" id="yH6-wH-Elm"/>
                         </constraints>
@@ -452,6 +464,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="charactersRemainingLabel" destination="Z69-bA-H1d" id="gHd-UD-yx7"/>
                         <outlet property="statusContentTextView" destination="275-LA-9HY" id="GKW-Ig-hjv"/>
                     </connections>
                 </viewController>
